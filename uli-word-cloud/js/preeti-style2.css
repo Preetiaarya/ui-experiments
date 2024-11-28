@@ -1,7 +1,26 @@
-#container{
+#drag-div{
     text-align: center;
     height: 50px;
-    width: 10%;
+    width: 2%;
     background-color: rgb(186, 122, 38);
     position: absolute;
+}
+
+#main-container{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2%;
+}
+.ct-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 120px;
+    width: 8%;
+    border: 2px solid black;
+    /* text-align: center; */
+    gap: 2%;
 }

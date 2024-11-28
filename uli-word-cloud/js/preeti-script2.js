@@ -1,23 +1,23 @@
-let container = document.getElementById("container");
+let dragDiv = document.getElementById("drag-div");
 let isDragging = false;
 let offsetX, offsetY
-container.addEventListener("mousedown", (e) => {  //start dragging 
+dragDiv.addEventListener("mousedown", (e) => {  //start dragging 
   isDragging = true;
-  offsetX = e.clientX - container.offsetLeft
-  offsetY = e.clientY - container.offsetTop
-  container.style.cursor = 'dragging'
+  offsetX = e.clientX - dragDiv.offsetLeft
+  offsetY = e.clientY - dragDiv.offsetTop
+  dragDiv.style.cursor = 'dragging'
 
-  container.addEventListener("mousemove", (e) => { // move container while the mouse help down
+  dragDiv.addEventListener("mousemove", (e) => { // move container while the mouse help down
     if (isDragging) {
       const X = e.clientX;
       const Y = e.clientY;
-      container.style.left = `${X - offsetX}px`; // change position of div
-      container.style.top = `${Y - offsetY}px`
+      dragDiv.style.left = `${X - offsetX}px`; // change position of div
+      dragDiv.style.top = `${Y - offsetY}px`
       // console.log("Hello")
 
-      container.addEventListener("mouseup", () => { //end dragging
+      dragDiv.addEventListener("mouseup", () => { //end dragging
         isDragging = false;
-        container.style.cursor = 'grab'
+        dragDiv.style.cursor = 'grab'
       })
     }
   })
