@@ -1,50 +1,56 @@
 let dragDiv = document.getElementById("drag-div");
-const ctDiv = document.querySelectorAll(".ct-div")
+const categoryDivs = document.querySelectorAll(".category-div");
 let isDragging = false;
 let offsetX, offsetY;
+let currentDiv = null;
 
-// Start dragging
+// -----------------Start dragging-------------------------------
+
 dragDiv.addEventListener("mousedown", (e) => {
   isDragging = true;
   offsetX = e.clientX - dragDiv.offsetLeft;
   offsetY = e.clientY - dragDiv.offsetTop;
-  dragDiv.style.cursor = 'grabbing';
+  dragDiv.style.cursor = "grabbing";
 });
 
-// Move container while the mouse is held down
 document.addEventListener("mousemove", (e) => {
   if (isDragging) {
-    dragDiv.style.position = "abousult"
     const X = e.clientX;
     const Y = e.clientY;
-    dragDiv.style.left = `${X - offsetX}px`; // Update position of dragDiv
+    dragDiv.style.left = `${X - offsetX}px`;
     dragDiv.style.top = `${Y - offsetY}px`;
 
-    ctDiv.forEach(categoryDiv=> {
-        const div1 = dragDiv.getBoundingClientRect();
-        const div2 = categoryDiv.getBoundingClientRect();
-    
-        const overlay = !(
-          div1.right < div2.left ||
-          div1.left > div2.right ||
-          div1.bottom < div2.top ||
-          div1.top > div2.bottom
-        );
-      // Check for overlap and change color accordingly
+    categoryDivs.forEach((categoryDiv) => {
+      const dragRect = dragDiv.getBoundingClientRect();
+      const categoryDivRect = categoryDiv.getBoundingClientRect();
+
+      const overlay = !(
+        dragRect.right < categoryDivRect.left ||
+        dragRect.left > categoryDivRect.right ||
+        dragRect.bottom < categoryDivRect.top ||
+        dragRect.top > categoryDivRect.bottom
+      );
+
       if (overlay) {
-        console.log(categoryDiv);
-        
         categoryDiv.style.backgroundColor = "yellow";
-      }else {
-        categoryDiv.style.backgroundColor = "white";
+        currentDiv = categoryDiv;
+      } else {
+        categoryDiv.style.backgroundColor = "";
       }
-      })
-
-  }});
-
-// End dragging
+    });
+  }
+});
 document.addEventListener("mouseup", () => {
-  isDragging = false;
-  dragDiv.style.cursor = 'grab';
-})
+  if (isDragging && currentDiv) {
+    const currentDivRect = currentDiv.getBoundingClientRect();
+    const centerX = currentDivRect.width / 2 - dragDiv.offsetWidth / 2;
+    const centerY = currentDivRect.height / 2 - dragDiv.offsetHeight / 2;
+    dragDiv.style.position = "absolute"; 
+    dragDiv.style.left = `${centerX}px`;
+    dragDiv.style.top = `${centerY}px`;
+    currentDiv.appendChild(dragDiv);
+  }
 
+  isDragging = false;
+  dragDiv.style.cursor = "grab";
+});
