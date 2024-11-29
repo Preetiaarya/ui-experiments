@@ -1,4 +1,5 @@
 
+
 let dragDiv = document.getElementById("drag-div");
 let categoryDivs = document.querySelectorAll(".category-div");
 let isDragging = false;
@@ -71,4 +72,3 @@ document.addEventListener("mouseup", () => {
     isDragging = false;
   }
 });
-

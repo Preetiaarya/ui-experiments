@@ -1,3 +1,4 @@
+
 h2{
     text-align: center;
 }
@@ -14,11 +15,12 @@ h2{
     display: inline-block;
     flex-direction: row;
     align-items: center;
+
     margin: 5%;
     height: 100px;
     width: 100px;
     border: 2px solid black;
-}
+
 p{
     text-align: center;
 }

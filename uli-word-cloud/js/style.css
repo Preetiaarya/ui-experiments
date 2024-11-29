@@ -1,28 +1,13 @@
-#container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    border: 2px solid black;
-    padding: 2%;
-    /* padding-left: 15%; */
-    width: 55%;
-    height: 600px
-
- }
-
-
-#container div {
-    padding-top:20px ;
-    width: 10%;
-    height: 65px; 
-    box-sizing: border-box;
-    /* padding: 1%; */
-     background-color: rgb(239, 163, 233);
-     position: absolute;
+#dragingDiv {
+  /* position: absolute; */
+  background-color: blue;
 }
- 
- 
-p {
-    margin: 0;
-    text-align: center; 
+
+.category{
+  display: inline-block;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin-top: 10px;
 }
