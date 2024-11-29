@@ -31,10 +31,24 @@ p {
 
 
 /* For experiment */
-#smallDiv{
+#dragg-div {
     position: absolute;
-    width:100px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     background-color: brown;
 
-} 
+}
+
+.main-container {
+    border: 2px solid purple;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5%;
+}
+
+.category-div {
+    width: 15%;
+    height: 300px;
+    border: 2px solid black;
+   text-align: center; 
+}
