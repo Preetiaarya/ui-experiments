@@ -1,19 +1,23 @@
+h2{
+    text-align: center;
+}
+
 #drag-div{
     text-align: center;
     height: 40px;
     width: 4%;
     background-color: rgb(186, 122, 38);
-    /* position: absolute; */
+    position: absolute;
 }
 
 .category-div{
     display: inline-block;
     flex-direction: row;
     align-items: center;
+    margin: 5%;
     height: 100px;
     width: 100px;
     border: 2px solid black;
-    gap: 2%;
 }
 p{
     text-align: center;
