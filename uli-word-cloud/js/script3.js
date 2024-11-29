@@ -1,13 +1,25 @@
-const dragingDiv = document.querySelector("#dragingDiv");
+const wordContainer = document.querySelector("#wordContainer");
 const categoryDivs = document.querySelectorAll(".category");
 
-let isDragging = false;
+const wordsArray = [
+    "Apple","Banana","Coconut","Guava","Ant","Phone","Laptop",
+    "Charger","Earphone","orange","Table","Chair","Lion","Fox","Ox","Cow","Ass","Money"
+]
+
+let height = 50;
+let width = 100;
+
+for (let i = 0; i< wordsArray.length; i++) {
+    let dragingDiv = document.createElement("div")
+    let word = document.createElement("p")
+    dragingDiv.setAttribute("class","dragingDiv")
+    dragingDiv.style.height = height + "px";
+    dragingDiv.style.width = width + "px";
+    wordContainer.append(dragingDiv)
+    dragingDiv.append(word)
+    word.append(wordsArray[i])
+    let isDragging = false;
 let currentCategory = null; 
-
-// Initial dimensions of the dragging div
-let width = parseInt(dragingDiv.style.width);
-let height = parseInt(dragingDiv.style.height);
-
 dragingDiv.addEventListener("mousedown", (e) => {
     isDragging = true;
 });
@@ -51,7 +63,8 @@ document.addEventListener("mouseup", () => {
         const parentRect = currentCategory.offsetParent.getBoundingClientRect(); 
 
         const centerX = categoryRect.left - parentRect.left + categoryRect.width / 2;
-        const centerY = categoryRect.top - parentRect.top + categoryRect.height / 2;
+        const centerY = categoryRect.top - parentRect.top + categoryRect.height / 2
+        currentCategory.style.backgroundColor
         console.log(currentCategory);
         
         dragingDiv.style.left = `${centerX - width / 2}px`;
@@ -61,3 +74,5 @@ document.addEventListener("mouseup", () => {
 
     isDragging = false;
 });
+}
+
